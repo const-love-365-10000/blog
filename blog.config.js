@@ -1,8 +1,8 @@
 const BLOG = {
   title: '余烬的博客',
   author: 'yujin',
-  email: 'i@craigary.net',
-  link: 'https://nobelium.vercel.app',
+  email: 'l1425816423@outlook.com',
+  link: 'https://yujin123.cn',
   description: '做一个优秀的前端开发工程师.',
   lang: 'zh-CN', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   appearance: 'auto', // ['light', 'dark', 'auto'],
@@ -10,16 +10,16 @@ const BLOG = {
   lightBackground: '#ffffff', // use hex value, don't forget '#' e.g #fffefc
   darkBackground: '#18181B', // use hex value, don't forget '#'
   path: '', // leave this empty unless you want to deploy Nobelium in a folder
-  since: 2021, // If leave this empty, current year will be used.
+  since: 2019, // If leave this empty, current year will be used.
   postsPerPage: 15,
-  sortByDate: false,
+  sortByDate: true,
   showAbout: true,
   showArchive: true,
   autoCollapsedNavBar: false, // The automatically collapsed navigation bar
   ogImageGenerateURL: 'https://og-image-craigary.vercel.app', // The link to generate OG image, don't end with a slash
-  socialLink: 'https://twitter.com/craigaryhart',
+  socialLink: 'https://yujin123.cn',
   seo: {
-    keywords: ['Blog', 'Website', 'Notion'],
+    keywords: ['Blog', 'Website', 'Notion', 'yujin123'],
     googleSiteVerification: '' // Remove the value or replace it with your own google site verification code
   },
   notionPageId: '4655688acd1b44debd31cd11e028cb46', // process.env.NOTION_PAGE_ID, // DO NOT CHANGE THIS！！！

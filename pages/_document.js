@@ -1,6 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import BLOG from '@/blog.config'
-import CJK from '@/lib/cjk'
+// import CJK from '@/lib/cjk'
 class MyDocument extends Document {
   static async getInitialProps (ctx) {
     const initialProps = await Document.getInitialProps(ctx)
@@ -61,7 +61,7 @@ class MyDocument extends Document {
                 href="https://fonts.gstatic.com"
                 crossOrigin="anonymous"
               />
-              <link
+              {/* <link
                 rel="preload"
                 as="style"
                 href={`https://fonts.googleapis.com/css2?family=Noto+${
@@ -80,6 +80,21 @@ class MyDocument extends Document {
                   href={`https://fonts.googleapis.com/css2?family=Noto+${
                     BLOG.font === 'serif' ? 'Serif' : 'Sans'
                   }+${CJK()}:wght@400;500;700&display=swap`}
+                />
+              </noscript> */}
+              <link
+                rel="preload"
+                as="style"
+                href='/Sans.css'
+              />
+              <link
+                rel="stylesheet"
+                href={'/Sans.css'}
+              />
+              <noscript>
+                <link
+                  rel="stylesheet"
+                  href={'/Sans.css'}
                 />
               </noscript>
             </>

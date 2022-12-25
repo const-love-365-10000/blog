@@ -7,7 +7,7 @@ export default function Tags ({ tags, posts }) {
         <ul className='flex flex-wrap'>
             {
                 Object.keys(tags).map(tag => (
-                    <li key={tag} className='text-black' style={{ margin: '8px' }}> <Link href={`/tag/${tag}`}>{`${tag}(${tags[tag]})`}</Link></li>
+                    <li key={tag} className='text-black dark:text-gray-100 cursor-pointer' style={{ margin: '8px' }}> <Link href={`/tag/${tag}`}>{`${tag}(${tags[tag]})`}</Link></li>
                 ))
             }
       </ul>

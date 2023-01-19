@@ -26,29 +26,29 @@ const BLOG = {
   notionPageId: '4655688acd1b44debd31cd11e028cb46', // process.env.NOTION_PAGE_ID, // DO NOT CHANGE THIS！！！
   notionAccessToken: process.env.NOTION_ACCESS_TOKEN, // Useful if you prefer not to make your database public
   analytics: {
-    provider: '', // Currently we support Google Analytics and Ackee, please fill with 'ga' or 'ackee', leave it empty to disable it.
+    provider: 'ga', // Currently we support Google Analytics and Ackee, please fill with 'ga' or 'ackee', leave it empty to disable it.
     ackeeConfig: {
       tracker: '', // e.g 'https://ackee.craigary.net/tracker.js'
       dataAckeeServer: '', // e.g https://ackee.craigary.net , don't end with a slash
       domainId: '' // e.g '0e2257a8-54d4-4847-91a1-0311ea48cc7b'
     },
     gaConfig: {
-      measurementId: '' // e.g: G-XXXXXXXXXX
+      measurementId: 'G-HBWX5ZTBMD' // e.g: G-XXXXXXXXXX
     }
   },
   comment: {
     // support provider: gitalk, utterances, cusdis
-    provider: '', // leave it empty if you don't need any comment plugin
+    provider: 'utterances', // leave it empty if you don't need any comment plugin
     gitalkConfig: {
-      repo: '', // The repository of store comments
-      owner: '',
-      admin: [],
-      clientID: '',
-      clientSecret: '',
-      distractionFreeMode: false
+      repo: 'blog', // The repository of store comments
+      owner: 'const-love-365-10000',
+      admin: ['const-love-365-10000'],
+      clientID: 'c6bf858d3ddb213caf0d',
+      clientSecret: 'badb681f9571a2e2ef0f0b9348724d49ea270da8',
+      distractionFreeMode: true
     },
     utterancesConfig: {
-      repo: ''
+      repo: 'const-love-365-10000/blog'
     },
     cusdisConfig: {
       appId: '', // data-app-id

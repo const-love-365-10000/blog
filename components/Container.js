@@ -61,6 +61,8 @@ const Container = ({ children, layout, fullWidth, ...customMeta }) => {
             <meta property="article:author" content={BLOG.author} />
           </>
         )}
+        {/* google搜索收录 */}
+        <meta name="google-site-verification" content="ZhjdHnY6eAvZvL-w2zFvgvbBaWttkbiFW2ikwlJZQbA" />
       </Head>
       <div
         className={`wrapper ${

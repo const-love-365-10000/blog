@@ -2,6 +2,7 @@ import Layout from '@/layouts/layout'
 import { getAllPosts, getPostBlocks } from '@/lib/notion'
 import BLOG from '@/blog.config'
 import { createHash } from 'crypto'
+// import { updateReaderNumber } from '@/lib/notion/updateReader'
 
 const BlogPost = ({ post, blockMap, emailHash }) => {
   if (!post) return null
@@ -32,6 +33,8 @@ export async function getStaticProps ({ params: { slug } }) {
     .digest('hex')
     .trim()
     .toLowerCase()
+
+  // updateReaderNumber()
 
   return {
     props: { post, blockMap, emailHash },

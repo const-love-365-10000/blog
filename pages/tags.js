@@ -1,6 +1,7 @@
 import Container from '@/components/Container'
 import { getAllPosts, getAllTagsFromPosts } from '@/lib/notion'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Tags ({ tags, posts, categories }) {
   console.log(posts)
@@ -10,7 +11,7 @@ export default function Tags ({ tags, posts, categories }) {
       return ''
     }
     if (/^http[s]?:\/\//.test(url)) {
-      return <img src={url} alt={url} style={{ height: '18px' }} />
+      return <Image src={url} alt={url} height= {20} width={20} />
     } else {
       return <span>{url}</span>
     }

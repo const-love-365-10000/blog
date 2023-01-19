@@ -16,6 +16,10 @@ const BlogPost = ({ post }) => {
             </time>
           </header>
           <main>
+
+            {/* <span>
+              阅读人数： {post.readerNumber}
+            </span> */}
             <p className="hidden md:block leading-8 text-gray-700 dark:text-gray-300">
               {post.summary}
             </p>

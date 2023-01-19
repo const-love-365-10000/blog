@@ -3,6 +3,19 @@ import { getAllPosts, getAllTagsFromPosts } from '@/lib/notion'
 import Link from 'next/link'
 
 export default function Tags ({ tags, posts, categories }) {
+  console.log(posts)
+
+  function handleEmoji (url) {
+    if (!url) {
+      return ''
+    }
+    if (/^http[s]?:\/\//.test(url)) {
+      return <img src={url} alt={url} style={{ height: '18px' }} />
+    } else {
+      return <span>{url}</span>
+    }
+  }
+
   return <Container>
         {/* <ul className='flex flex-wrap'>
             {
@@ -27,7 +40,7 @@ export default function Tags ({ tags, posts, categories }) {
           categories[tag].map(post => (
             <div key={post.id} className="my-2 p-1 text-gray-800 cursor-pointer hover:bg-gray-100 ">
               <Link href={`/${post.slug}`} passHref>
-                <span>{post.emoji && <span>{post.emoji}</span>}{post.title}</span>
+                <div className='flex'>{handleEmoji(post.emoji)}{post.title}</div>
               </Link>
             </div>
           ))

@@ -44,7 +44,7 @@ const BLOG = {
       owner: 'const-love-365-10000',
       admin: ['const-love-365-10000'],
       clientID: 'c6bf858d3ddb213caf0d',
-      clientSecret: 'badb681f9571a2e2ef0f0b9348724d49ea270da8',
+      clientSecret: '',
       distractionFreeMode: true
     },
     utterancesConfig: {

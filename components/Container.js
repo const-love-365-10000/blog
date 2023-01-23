@@ -5,7 +5,7 @@ import Head from 'next/head'
 import PropTypes from 'prop-types'
 // import BlogPost from './BlogPost'
 
-const Container = ({ children, layout, fullWidth, ...customMeta }) => {
+const Container = ({ children, layout, fullWidth, posts, ...customMeta }) => {
   const url = BLOG.path.length ? `${BLOG.link}/${BLOG.path}` : BLOG.link
   const meta = {
     title: BLOG.title,
@@ -80,7 +80,7 @@ const Container = ({ children, layout, fullWidth, ...customMeta }) => {
         >
           {children}
         </main>
-        <Footer fullWidth={fullWidth} />
+        <Footer fullWidth={fullWidth} posts={posts} />
       </div>
     </div>
   )

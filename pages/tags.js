@@ -3,8 +3,6 @@ import { getAllPosts, getAllTagsFromPosts } from '@/lib/notion'
 import Link from 'next/link'
 
 export default function Tags ({ tags, posts, categories }) {
-  console.log(posts)
-
   function handleEmoji (url) {
     if (!url) {
       return ''
@@ -35,7 +33,7 @@ export default function Tags ({ tags, posts, categories }) {
     <div className='flex flex-wrap justify-between'>
     {Object.keys(categories).map(tag => (
       <div key={tag} className='w-1/2 md:w-2/5 h-full my-1 text-black dark:text-gray-100' >
-        <h3 className="text-2xl cursor-pointer"><Link href={`/tag/${tag}`}>{`${tag}(${tags[tag]})`}</Link></h3>
+        <h3 className="text-2xl cursor-pointer" id={tag}><Link href={`/tags#${tag}`}>{`${tag}(${tags[tag]})`}</Link></h3>
         <hr className='my-2'/>
         {
           categories[tag].map(post => (

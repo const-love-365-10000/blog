@@ -41,14 +41,14 @@ const BLOG = {
     provider: 'utterances', // leave it empty if you don't need any comment plugin
     gitalkConfig: {
       repo: 'blog', // The repository of store comments
-      owner: 'const-love-365-10000',
-      admin: ['const-love-365-10000'],
+      owner: 'star-ll',
+      admin: ['star-ll'],
       clientID: 'c6bf858d3ddb213caf0d',
       clientSecret: '',
       distractionFreeMode: true
     },
     utterancesConfig: {
-      repo: 'const-love-365-10000/blog'
+      repo: 'star-ll/blog'
     },
     cusdisConfig: {
       appId: '', // data-app-id

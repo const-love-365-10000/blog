@@ -2,17 +2,21 @@ import Layout from '@/layouts/layout'
 import { getAllPosts, getPostBlocks } from '@/lib/notion'
 import BLOG from '@/blog.config'
 import { createHash } from 'crypto'
-// import { updateReaderNumber } from '@/lib/notion/updateReader'
 
 const BlogPost = ({ post, blockMap, emailHash }) => {
   if (!post) return null
   return (
-    <Layout
-      blockMap={blockMap}
-      frontMatter={post}
-      emailHash={emailHash}
-      fullWidth={post.fullWidth}
-    />
+    <>
+      {// eslint-disable-next-line @next/next/no-img-element
+        <img className='hidden' src={`/api/addReaderNumber?pageId=${post.id}&t=${new Date().getTime()}`} alt="readerCount" />
+      }
+      <Layout
+        blockMap={blockMap}
+        frontMatter={post}
+        emailHash={emailHash}
+        fullWidth={post.fullWidth}
+        />
+      </>
   )
 }
 
@@ -33,8 +37,6 @@ export async function getStaticProps ({ params: { slug } }) {
     .digest('hex')
     .trim()
     .toLowerCase()
-
-  // updateReaderNumber()
 
   return {
     props: { post, blockMap, emailHash },

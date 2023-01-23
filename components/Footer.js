@@ -14,7 +14,7 @@ const Footer = ({ fullWidth, posts }) => {
 
   return (
     <footer
-      className={`footer flex flex-col items-center justify-center mt-6 flex-shrink-0 m-auto w-full text-gray-500 dark:text-gray-400 transition-all ${
+      className={`footer flex flex-col items-center justify-center mt-6 flex-shrink-0 m-auto w-full text-gray-500 dark:text-gray-400 transition-all whitespace-nowrap ${
         !fullWidth ? 'max-w-2xl px-4' : 'px-4 md:px-24'
       }`}
     >

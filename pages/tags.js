@@ -37,7 +37,7 @@ export default function Tags ({ tags, posts, categories }) {
         <hr className='my-2'/>
         {
           categories[tag].map(post => (
-            <div key={post.id} className="ml-2 my-2 p-1 text-gray-800 cursor-pointer hover:bg-gray-100 ">
+            <div key={post.id} className="ml-2 my-2 p-1 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 ">
               <Link href={`/${post.slug}`} passHref>
                 <a className='flex'>{handleEmoji(post.emoji)}{post.title}</a>
               </Link>

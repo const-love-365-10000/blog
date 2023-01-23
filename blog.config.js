@@ -2,7 +2,7 @@ const BLOG = {
   title: '余烬的博客',
   author: 'yujin',
   email: 'l1425816423@outlook.com',
-  link: 'https://yujin123.cn',
+  link: 'https://vercel.yujin123.cn',
   description: '做一个优秀的前端开发工程师.',
   customDomain: 'yujin-cn.notion', // notion设置的的域名
   lang: 'zh-CN', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']

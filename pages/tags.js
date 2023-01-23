@@ -15,7 +15,7 @@ export default function Tags ({ tags, posts, categories }) {
     }
   }
 
-  return <Container>
+  return <Container posts={posts}>
         {/* <ul className='flex flex-wrap'>
             {
                 Object.keys(tags).map(tag => (
@@ -33,13 +33,13 @@ export default function Tags ({ tags, posts, categories }) {
     <div className='flex flex-wrap justify-between'>
     {Object.keys(categories).map(tag => (
       <div key={tag} className='w-1/2 md:w-2/5 h-full my-1 text-black dark:text-gray-100' >
-        <h3 className="text-2xl cursor-pointer" id={tag}><Link href={`/tags#${tag}`}>{`${tag}(${tags[tag]})`}</Link></h3>
+        <h3 className="ml-2 text-2xl cursor-pointer" id={tag}><Link href={`/tags#${tag}`}>{`${tag}(${tags[tag]})`}</Link></h3>
         <hr className='my-2'/>
         {
           categories[tag].map(post => (
-            <div key={post.id} className="my-2 p-1 text-gray-800 cursor-pointer hover:bg-gray-100 ">
+            <div key={post.id} className="ml-2 my-2 p-1 text-gray-800 cursor-pointer hover:bg-gray-100 ">
               <Link href={`/${post.slug}`} passHref>
-                <div className='flex'>{handleEmoji(post.emoji)}{post.title}</div>
+                <a className='flex'>{handleEmoji(post.emoji)}{post.title}</a>
               </Link>
             </div>
           ))

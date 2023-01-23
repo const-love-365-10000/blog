@@ -54,6 +54,9 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
 	background-color: var(--thumbBG);
 }
+html,body {
+	scroll-behavior: smooth;
+}
 
 ::selection {
 	background: rgba(45, 170, 219, 0.3);

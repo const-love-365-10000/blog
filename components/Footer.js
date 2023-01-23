@@ -19,7 +19,7 @@ const Footer = ({ fullWidth, posts }) => {
       }`}
     >
       <hr className="border-gray-200 dark:border-gray-600" />
-      <div className="beian flex">
+      <div className="beian flex text-xs md:text-base">
         <a href="http://www.beian.miit.gov.cn" rel="noopener external nofollow noreferrer" target="_blank" className="exturl" title="">湘 ICP 备 20004217 号 - 1 </a>
         <div className='h-5 w-px bg-gray-400 rounded-sm mx-2'></div>
         <span className='flex'>
@@ -34,12 +34,12 @@ const Footer = ({ fullWidth, posts }) => {
         <div className='flex justify-center'>
           {(readerCount && posts) && <>
             <span>👁️‍🗨️{readerCount}</span>
-            <span className='ml-2'>🕮{ posts.length}</span>
+            <span className='ml-2'>📰{ posts.length}</span>
           </>}
         </div>
         <div className="flex align-baseline justify-between flex-wrap">
           <div>
-            <div className='inline-block h-4 w-4 mr-2'><span className='mr-1 foot-love'>❤️</span></div>
+            <div className='inline-block h-4 w-4 mr-2'><span className='mr-2 foot-love'>❤️</span></div>
             © {BLOG.author} {from === y || !from ? y : `${from} - ${y}`}
           </div>
           {/* <Vercel /> */}

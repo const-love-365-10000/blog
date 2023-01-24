@@ -19,7 +19,7 @@ const Footer = ({ fullWidth, posts }) => {
       }`}
     >
       <hr className="border-gray-200 dark:border-gray-600" />
-      <div className="beian flex text-xs md:text-base">
+      <div className="beian flex text-xs md:text-base whitespace-pre-wrap">
         <a href="http://www.beian.miit.gov.cn" rel="noopener external nofollow noreferrer" target="_blank" className="exturl" title="">湘 ICP 备 20004217 号 - 1 </a>
         <div className='h-5 w-px bg-gray-400 rounded-sm mx-2'></div>
         <span className='flex'>

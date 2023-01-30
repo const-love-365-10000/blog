@@ -13,15 +13,16 @@ export async function getStaticProps () {
     props: {
       page: 1, // current page is 1
       postsToShow,
-      showNext
+      showNext,
+      posts
     },
     revalidate: 1
   }
 }
 
-const blog = ({ postsToShow, page, showNext }) => {
+const blog = ({ postsToShow, page, showNext, posts }) => {
   return (
-    <Container title={BLOG.title} description={BLOG.description} posts={postsToShow}>
+    <Container title={BLOG.title} description={BLOG.description} posts={posts}>
       {postsToShow.map(post => (
         <BlogPost key={post.id} post={post} />
       ))}

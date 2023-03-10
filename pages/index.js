@@ -22,7 +22,7 @@ export async function getStaticProps () {
 
 const blog = ({ postsToShow, page, showNext, posts }) => {
   return (
-    <Container title={BLOG.title} description={BLOG.description} posts={posts}>
+    <Container title={BLOG.title} description={BLOG.description} posts={posts} >
       {postsToShow.map(post => (
         <BlogPost key={post.id} post={post} />
       ))}

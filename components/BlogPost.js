@@ -11,7 +11,8 @@ const BlogPost = ({ post }) => {
           key={post.id}
           className="mb-6 md:mb-8 flex flex-col lg:flex-row justify-between md:items-baseline "
         >
-          <header className="flex w-4/12 mb-2 flex-col justify-between md:flex-row md:items-baseline">
+          <header className="flex mb-2 flex-col justify-between md:flex-row md:items-baseline"
+           style={{ flex: 4 }}>
             <time
               dateTime={formatDate(
                 post?.date?.start_date || post.createdTime,
@@ -25,17 +26,16 @@ const BlogPost = ({ post }) => {
               )}
             </time>
           </header>
-          <main className="w-8/12" >
+          <main style={{ flex: 8 }}>
             {/* <span>
               阅读人数： {post.readerNumber}
             </span> */}
             <h2
               className="article-title text-xl lg:text-2xl font-semibold mb-2 cursor-pointer text-black dark:text-gray-100"
-              style={{ width: 'fit-content' }}
             >
               {post.title}
             </h2>
-            <section className="mb-4">
+            <section className="mb-2 lg:mb-4">
               {post.tags.map((tag) => (
                 <Link href={'/tag/' + tag} key={tag}>
                   <a className="mr-3 text-sm font-medium  text-blue-500 hover:text-blue-600 dark:text-sky-400 dark:hover:text-sky-300 hover:text-shadow transition duration-300 md:text-base">

@@ -44,7 +44,7 @@ const BlogPost = ({ post }) => {
                 </Link>
               ))}
             </section>
-            <p className="leading-8 text-base font-medium text-gray-700 dark:text-gray-200 font-mono line-clamp">
+            <p className="leading-8 text-sm font-light md:font-medium md:text-base text-gray-700 dark:text-gray-200  font-mono line-clamp">
               {post.summary}
             </p>
           </main>

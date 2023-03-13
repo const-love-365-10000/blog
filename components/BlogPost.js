@@ -1,9 +1,9 @@
-import Link from "next/link";
-import BLOG from "@/blog.config";
-import formatDate from "@/lib/formatDate";
+import Link from 'next/link'
+import BLOG from '@/blog.config'
+import formatDate from '@/lib/formatDate'
 
 const BlogPost = ({ post }) => {
-  console.log(post);
+  console.log(post)
   return (
     <Link href={`${BLOG.path}/${post.slug}`}>
       <a>
@@ -11,7 +11,7 @@ const BlogPost = ({ post }) => {
           key={post.id}
           className="mb-6 md:mb-8 flex flex-col lg:flex-row justify-between md:items-baseline "
         >
-          <header className="flex flex-1 mb-2 flex-col justify-between md:flex-row md:items-baseline">
+          <header className="flex w-4/12 mb-2 flex-col justify-between md:flex-row md:items-baseline">
             <time
               dateTime={formatDate(
                 post?.date?.start_date || post.createdTime,
@@ -25,33 +25,33 @@ const BlogPost = ({ post }) => {
               )}
             </time>
           </header>
-          <main className="" style={{ flex: 3 }}>
+          <main className="w-8/12" >
             {/* <span>
               阅读人数： {post.readerNumber}
             </span> */}
             <h2
               className="article-title text-xl lg:text-2xl font-semibold mb-2 cursor-pointer text-black dark:text-gray-100"
-              style={{ width: "fit-content" }}
+              style={{ width: 'fit-content' }}
             >
               {post.title}
             </h2>
-            <section className="mb-2">
+            <section className="mb-4">
               {post.tags.map((tag) => (
-                <Link href={"/tag/" + tag} key={tag}>
+                <Link href={'/tag/' + tag} key={tag}>
                   <a className="mr-3 text-sm font-medium  text-blue-500 hover:text-blue-600 dark:text-sky-400 dark:hover:text-sky-300 hover:text-shadow transition duration-300 md:text-base">
-                    {"#" + tag}
+                    {'#' + tag}
                   </a>
                 </Link>
               ))}
             </section>
-            <p className="leading-8 text-base text-gray-600 dark:text-gray-300">
+            <p className="leading-8 text-base font-medium text-gray-700 dark:text-gray-200 font-mono line-clamp">
               {post.summary}
             </p>
           </main>
         </article>
       </a>
     </Link>
-  );
-};
+  )
+}
 
-export default BlogPost;
+export default BlogPost

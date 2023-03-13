@@ -15,39 +15,41 @@ export default function Tags ({ tags, posts, categories }) {
     }
   }
 
-  return <Container posts={posts}>
-        {/* <ul className='flex flex-wrap'>
-            {
-                Object.keys(tags).map(tag => (
-                    <li key={tag} className='text-black dark:text-gray-100 cursor-pointer' style={{ margin: '8px' }}> <Link href={`/tag/${tag}`}>{`${tag}(${tags[tag]})`}</Link></li>
-                ))
-            }
-      </ul> */}
-    {/* <div className='grid grid-cols-2'>
-      <div>
-      {Object.keys(tags).map(tag => (
-                    <li key={tag} className='text-black dark:text-gray-100 cursor-pointer' style={{ margin: '8px' }}> <Link href={`/tag/${tag}`}>{`${tag}(${tags[tag]})`}</Link></li>
+  return (
+    <Container posts={posts}>
+          {/* <ul className='flex flex-wrap'>
+              {
+                  Object.keys(tags).map(tag => (
+                      <li key={tag} className='text-black dark:text-gray-100 cursor-pointer' style={{ margin: '8px' }}> <Link href={`/tag/${tag}`}>{`${tag}(${tags[tag]})`}</Link></li>
+                  ))
+              }
+        </ul> */}
+      {/* <div className='grid grid-cols-2'>
+        <div>
+        {Object.keys(tags).map(tag => (
+                      <li key={tag} className='text-black dark:text-gray-100 cursor-pointer' style={{ margin: '8px' }}> <Link href={`/tag/${tag}`}>{`${tag}(${tags[tag]})`}</Link></li>
+        ))}
+        </div>
+      </div> */}
+      <div className='flex flex-wrap justify-between'>
+      {Object.keys(categories).map(tag => (
+        <div key={tag} className='w-1/2 md:w-2/5 h-full my-1 text-black dark:text-gray-100' >
+          <h3 className="ml-2 text-2xl cursor-pointer" id={tag}><Link href={`/tags#${tag}`} legacyBehavior>{`${tag}(${tags[tag]})`}</Link></h3>
+          <hr className='my-2'/>
+          {
+            categories[tag].map(post => (
+              <div key={post.id} className="ml-2 my-2 p-1 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 ">
+                <Link href={`/${post.slug}`} passHref className='flex'>
+                  {handleEmoji(post.emoji)}{post.title}
+                </Link>
+              </div>
+            ))
+          }
+          </div>
       ))}
       </div>
-    </div> */}
-    <div className='flex flex-wrap justify-between'>
-    {Object.keys(categories).map(tag => (
-      <div key={tag} className='w-1/2 md:w-2/5 h-full my-1 text-black dark:text-gray-100' >
-        <h3 className="ml-2 text-2xl cursor-pointer" id={tag}><Link href={`/tags#${tag}`}>{`${tag}(${tags[tag]})`}</Link></h3>
-        <hr className='my-2'/>
-        {
-          categories[tag].map(post => (
-            <div key={post.id} className="ml-2 my-2 p-1 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 ">
-              <Link href={`/${post.slug}`} passHref>
-                <a className='flex'>{handleEmoji(post.emoji)}{post.title}</a>
-              </Link>
-            </div>
-          ))
-        }
-        </div>
-    ))}
-    </div>
-  </Container>
+    </Container>
+  )
 }
 
 export async function getStaticProps ({ params }) {

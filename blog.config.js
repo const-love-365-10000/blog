@@ -37,7 +37,7 @@ const BLOG = {
     }
   },
   comment: {
-    // support provider: gitalk, utterances, cusdis
+    // support provider: gitalk, utterances, cusdis（版本不支持，已删除）
     provider: 'utterances', // leave it empty if you don't need any comment plugin
     gitalkConfig: {
       repo: 'blog', // The repository of store comments

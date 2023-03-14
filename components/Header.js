@@ -68,7 +68,7 @@ const Header = ({ navBarTitle, fullWidth }) => {
       ref={navRef}
     >
       <div className="flex items-center">
-        <Link href="/" aria-label={BLOG.title}>
+        <Link href="/" aria-label={BLOG.title} passHref>
 
           <div className="h-6">
             {/* <Image src="https://s1.ax1x.com/2023/01/19/pS8runK.jpg"

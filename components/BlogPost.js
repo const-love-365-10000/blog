@@ -1,11 +1,21 @@
 import Link from 'next/link'
 import BLOG from '@/blog.config'
 import formatDate from '@/lib/formatDate'
+import { useRouter } from 'next/router'
 
 const BlogPost = ({ post }) => {
   console.log(post)
+
+  const router = useRouter()
+
+  function onClickTag (e, path) {
+    e.stopPropagation()
+    e.preventDefault()
+    router.push(path)
+  }
+
   return (
-    (<Link href={`${BLOG.path}/${post.slug}`}>
+    (<Link href={`${BLOG.path}/${post.slug}`} passHref>
 
       <article
         key={post.id}
@@ -37,14 +47,14 @@ const BlogPost = ({ post }) => {
           </h2>
           <section className="mb-2 lg:mb-4">
             {post.tags.map((tag) => (
-              (<Link
-                href={'/tag/' + tag}
+              (<span
+                onClick={(e) => onClickTag(e, '/tag/' + tag)}
                 key={tag}
                 className="mr-3 text-sm font-medium  text-blue-500 hover:text-blue-600 dark:text-sky-400 dark:hover:text-sky-300 hover:text-shadow transition duration-300 md:text-base">
 
                 {'#' + tag}
 
-              </Link>)
+              </span>)
             ))}
           </section>
           <p className="leading-8 text-sm font-light md:font-medium md:text-base text-gray-700 dark:text-gray-200  font-mono line-clamp">

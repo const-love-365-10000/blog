@@ -1,11 +1,15 @@
 import Link from 'next/link'
 import BLOG from '@/blog.config'
 import formatDate from '@/lib/formatDate'
+import { useRouter } from 'next/router'
 
 const BlogPost = ({ post }) => {
-  console.log(post)
+  // console.log(post)
+
+  const router = useRouter()
+
   return (
-    (<Link href={`${BLOG.path}/${post.slug}`}>
+    (<Link href={`${BLOG.path}/${post.slug}` } passHref>
 
       <article
         key={post.id}
@@ -31,20 +35,20 @@ const BlogPost = ({ post }) => {
             阅读人数： {post.readerNumber}
           </span> */}
           <h2
-            className="article-title text-xl lg:text-2xl font-semibold mb-2 cursor-pointer text-black dark:text-gray-100"
+            className="article-title text-xl lg:text-2xl font-semibold mb-2 cursor-pointer text-black dark:text-gray-100 w-fit"
           >
             {post.title}
           </h2>
           <section className="mb-2 lg:mb-4">
             {post.tags.map((tag) => (
-              (<Link
-                href={'/tag/' + tag}
+              (<span
+               onClick={() => router.push('/tag/' + tag)}
                 key={tag}
                 className="mr-3 text-sm font-medium  text-blue-500 hover:text-blue-600 dark:text-sky-400 dark:hover:text-sky-300 hover:text-shadow transition duration-300 md:text-base">
 
                 {'#' + tag}
 
-              </Link>)
+              </span>)
             ))}
           </section>
           <p className="leading-8 text-sm font-light md:font-medium md:text-base text-gray-700 dark:text-gray-200  font-mono line-clamp">

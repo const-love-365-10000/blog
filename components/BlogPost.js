@@ -4,12 +4,18 @@ import formatDate from '@/lib/formatDate'
 import { useRouter } from 'next/router'
 
 const BlogPost = ({ post }) => {
-  // console.log(post)
+  console.log(post)
 
   const router = useRouter()
 
+  function onClickTag (e, path) {
+    e.stopPropagation()
+    e.preventDefault()
+    router.push(path)
+  }
+
   return (
-    (<Link href={`${BLOG.path}/${post.slug}` } passHref>
+    (<Link href={`${BLOG.path}/${post.slug}`} passHref>
 
       <article
         key={post.id}
@@ -42,7 +48,7 @@ const BlogPost = ({ post }) => {
           <section className="mb-2 lg:mb-4">
             {post.tags.map((tag) => (
               (<span
-               onClick={() => router.push('/tag/' + tag)}
+                onClick={(e) => onClickTag(e, '/tag/' + tag)}
                 key={tag}
                 className="mr-3 text-sm font-medium  text-blue-500 hover:text-blue-600 dark:text-sky-400 dark:hover:text-sky-300 hover:text-shadow transition duration-300 md:text-base">
 

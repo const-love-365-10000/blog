@@ -3,6 +3,8 @@ import Link from 'next/link'
 // import Image from 'next/image'
 import BLOG from '@/blog.config'
 import { useLocale } from '@/lib/locale'
+import Image from 'next/image'
+
 
 const NavBar = () => {
   const locale = useLocale()
@@ -69,13 +71,13 @@ const Header = ({ navBarTitle, fullWidth }) => {
     >
       <div className="flex items-center">
         <Link href="/" aria-label={BLOG.title} passHref>
-
           <div className="h-6">
-            {/* <Image src="https://s1.ax1x.com/2023/01/19/pS8runK.jpg"
+            {/* https://s1.ax1x.com/2023/01/19/pS8runK.jpg */}
+            <Image src="/author.png"
               alt="logo"
               width={24}
-              height={24} /> */}
-            <svg
+              height={24} />
+            {/* <svg
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -101,7 +103,7 @@ const Header = ({ navBarTitle, fullWidth }) => {
                   <stop offset="1" stopColor="#E9E9E9" stopOpacity="0" />
                 </radialGradient>
               </defs>
-            </svg>
+            </svg> */}
           </div>
 
         </Link>

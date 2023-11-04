@@ -1,0 +1,5 @@
+@media (prefers-color-scheme: dark) {
+  .notion-table-of-contents .notion-table-of-contents-item {
+    color: white;
+  }
+}

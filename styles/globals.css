@@ -187,3 +187,10 @@ nav {
   overflow: hidden;
   -webkit-line-clamp: 3;
 }
+
+/* 文章页暗黑模式下目录颜色 */
+@media (prefers-color-scheme: dark) {
+  .notion-table-of-contents .notion-table-of-contents-item {
+    color: white;
+  }
+}

@@ -2,83 +2,120 @@ import Container from '@/components/Container'
 import { getAllPosts, getAllTagsFromPosts } from '@/lib/notion'
 import { useEffect, useRef } from 'react'
 
+const colorArr = [
+  '#96b5f5',
+  '#5AD8A6',
+  '#ac9fad',
+  '#F6BD16',
+  '#c2bfdb',
+  '#6DC8EC',
+  '#D3EEF9',
+  '#DECFEA',
+  '#FFE0C7',
+  '#1E9493',
+  '#BBDEDE',
+  '#FF99C3',
+  '#FFE0ED',
+  '#CDDDFD',
+  '#CDF3E4',
+  '#CED4DE',
+  '#FCEBB9',
+  '#D3CEFD',
+  '#945FB9',
+  '#FF9845'
+]
+const dataTransform = (data) => {
+  const changeData = (d, level = 0, color) => {
+    const data = {
+      ...d,
+      transition: {
+        duration: 0.5,
+        ease: 'easeInOutQuart'
+      }
+    }
+    switch (level) {
+      case 0:
+        data.type = 'dice-mind-map-root'
+        break
+      case 1:
+        data.type = 'dice-mind-map-sub'
+        break
+      default:
+        data.type = 'dice-mind-map-leaf'
+        break
+    }
+
+    data.hover = false
+
+    if (color) {
+      data.color = color
+    }
+
+    if (level === 1 && !d.direction) {
+      if (!d.direction) {
+        data.direction =
+          d.id.charCodeAt(d.id.length - 1) % 2 === 0 ? 'right' : 'left'
+      }
+    }
+
+    if (d.children) {
+      data.children = d.children.map((child) =>
+        changeData(child, level + 1, colorArr[Number(child.id.split('-')[0]) % colorArr.length])
+      )
+    }
+    return data
+  }
+  return changeData(data)
+}
+
 export async function getStaticProps ({ params }) {
   const posts = await getAllPosts({ includePages: false })
   const tags = getAllTagsFromPosts(posts)
-  const categories = {}
-  posts.forEach((post) => {
-    if (post.tags?.[0]) {
-      const tag = post.tags[0]
-      categories[tag] = Array.isArray(categories[tag])
-        ? [...categories[tag], post]
-        : [post]
+
+  const tagsName = Object.keys(tags).map(i => ({ label: i, children: [] }))
+  posts.forEach(item => {
+    const postTag = item?.tags?.[0]
+    if (postTag) {
+      tagsName.forEach((tag, tagIndex) => {
+        if (tag.label === postTag) {
+          tag.children.push({
+            label: item.title,
+            id: `${tagIndex}-${tag.children.length + 1}`
+          })
+        }
+      })
     }
   })
+  const rawData = {
+    label: '前端知识体系',
+    id: 'root',
+    children: tagsName.map((tag, i) => ({
+      label: tag.label,
+      id: i.toString(),
+      children: tag.children || []
+    }))
+  }
+  console.log('rawData', rawData)
+
+  const treeData = dataTransform(rawData)
 
   return {
     props: {
       tags,
       posts,
-      categories
+      treeData
     },
     revalidate: 1
   }
 }
 
-export default function Mind ({ tags, posts }) {
-  console.log('tags', tags, posts)
+export default function Mind ({ treeData }) {
   const mindContainer = useRef(null)
 
   useEffect(() => {
-    import('@antv/g6').then((G6) => {
+    console.log(123, treeData)
+    import('@antv/g6/es/index').then((G6) => {
       const { Util } = G6
-
-      const colorArr = [
-        '#96b5f5',
-        '#5AD8A6',
-        '#ac9fad',
-        '#F6BD16',
-        '#c2bfdb',
-        '#6DC8EC',
-        '#D3EEF9',
-        '#DECFEA',
-        '#FFE0C7',
-        '#1E9493',
-        '#BBDEDE',
-        '#FF99C3',
-        '#FFE0ED',
-        '#CDDDFD',
-        '#CDF3E4',
-        '#CED4DE',
-        '#FCEBB9',
-        '#D3CEFD',
-        '#945FB9',
-        '#FF9845'
-      ]
-
-      const tagsName = Object.keys(tags).map(i => ({ label: i, children: [] }))
-      posts.forEach(item => {
-        const postTag = item?.tags?.[0]
-        if (postTag) {
-          tagsName.forEach((tag, tagIndex) => {
-            if (tag.label === postTag) {
-              tag.children.push({
-                label: item.title,
-                id: `${tagIndex}-${tag.children.length + 1}`
-              })
-            }
-          })
-        }
-      })
-      const rawData = {
-        label: '前端知识体系',
-        id: 'root',
-        children: tagsName.map((tag, i) => ({
-          label: tag.label,
-          id: i.toString(),
-          children: tag.children || []
-        }))
-      }
 
       G6.registerNode(
         'dice-mind-map-root',
@@ -359,47 +396,6 @@ export default function Mind ({ tags, posts }) {
         }
       })
 
-      const dataTransform = (data) => {
-        const changeData = (d, level = 0, color) => {
-          const data = {
-            ...d
-          }
-          switch (level) {
-            case 0:
-              data.type = 'dice-mind-map-root'
-              break
-            case 1:
-              data.type = 'dice-mind-map-sub'
-              break
-            default:
-              data.type = 'dice-mind-map-leaf'
-              break
-          }
-
-          data.hover = false
-
-          if (color) {
-            data.color = color
-            console.log('color', data)
-          }
-
-          if (level === 1 && !d.direction) {
-            if (!d.direction) {
-              data.direction =
-                d.id.charCodeAt(d.id.length - 1) % 2 === 0 ? 'right' : 'left'
-            }
-          }
-
-          if (d.children) {
-            data.children = d.children.map((child) =>
-              changeData(child, level + 1, colorArr[Number(child.id.split('-')[0]) % colorArr.length])
-            )
-          }
-          return data
-        }
-        return changeData(data)
-      }
-
       const container = document.getElementById('mindContianer')
       container.innerHTML = ''
 
@@ -443,11 +439,11 @@ export default function Mind ({ tags, posts }) {
           default: ['drag-canvas', 'zoom-canvas', 'dice-mindmap']
         }
       })
-      console.log('dataTransform(rawData)', dataTransform(rawData))
-      tree.data(dataTransform(rawData))
+
+      tree.data(treeData)
       tree.render()
     })
-  }, [tags, posts])
+  }, [treeData])
 
   return (
     <Container fullWidth={true}>

@@ -215,15 +215,15 @@ export default function Mind ({ treeData }) {
               </rect>
               <rect style={{ fill: ${color}, width: ${
                 width + 24
-              }, height: 2, x: 0, y: 32 }} />
+              }, height: 4, x: 0, y: 32 }} />
               
             </group>
           `
           },
           getAnchorPoints () {
             return [
-              [0, 0.965],
-              [1, 0.965]
+              [0, 0.930],
+              [1, 0.930]
             ]
           }
         },
@@ -422,7 +422,7 @@ export default function Mind ({ treeData }) {
             return 10
           },
           getHGap: () => {
-            return 60
+            return 100
           },
           getSide: (node) => {
             return node.data.direction
@@ -431,12 +431,26 @@ export default function Mind ({ treeData }) {
         defaultEdge: {
           type: 'cubic-horizontal',
           style: {
-            lineWidth: 2
+            lineWidth: 4,
+            stroke: '#345eee'
           }
         },
         minZoom: 0.5,
         modes: {
           default: ['drag-canvas', 'zoom-canvas', 'dice-mindmap']
+        }
+      })
+
+      tree.edge(edge => {
+        const node = tree.findById(edge.target)
+
+        console.log(node)
+        return {
+          id: edge.id,
+          type: 'cubic-horizontal',
+          style: {
+            stroke: node._cfg.model.color || '#eee'
+          }
         }
       })
 
